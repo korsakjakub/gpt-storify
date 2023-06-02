@@ -1,2 +1,3 @@
 # gpt-storify
-An Action for getting a single response from ChatGPT with OpenAI API
+
+An action that generates a story from a list of points using ChatGPT

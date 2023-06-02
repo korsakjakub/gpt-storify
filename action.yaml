@@ -1,0 +1,29 @@
+name: "GPT Storify"
+description: "Generate a story from a list of points using ChatGPT"
+author: "Jakub Korsak"
+inputs:
+  MODEL:
+    description: "Model to be used"
+    required: false
+    default: gpt-3.5-turbo
+  PROMPT:
+    description: "Newline separated points with story"
+    required: true
+  INSTRUCTION:
+    description: "Instruction for ChatGPT"
+    required: true
+  OPENAI_API_KEY:
+    description: "The API key to OpenAI (see openai.com)"
+    required: true
+outputs:
+  content:
+    description: "Response from ChatGPT"
+    value: ${{ steps.storify.outputs.content }}
+runs:
+  using: "docker"
+  image: "Dockerfile"
+  env: 
+    MODEL: ${{ inputs.MODEL }}
+    PROMPT: ${{ inputs.PROMPT }}
+    OPENAI_API_KEY: ${{ inputs.OPENAI_API_KEY }}
+    INSTRUCTION: ${{ inputs.INSTRUCTION }}
